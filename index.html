@@ -14,7 +14,7 @@
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg sticky-top" id="navbar">
-        <div class="container-xl px-4">
+        <div class="container px-3 px-md-4">
             <a class="navbar-brand fw-bold text-white" href="#">🚀 <span>Ashutosh</span> | System Design</a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
                 <i class="bi bi-list text-white fs-4"></i>
@@ -23,13 +23,11 @@
                 <ul class="navbar-nav ms-auto align-items-lg-center gap-1 py-2 py-lg-0">
                     <li class="nav-item"><a class="nav-link px-3" href="#">Home</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#articles">Articles</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#concepts">Concepts</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#topics">Topics</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#" data-bs-toggle="modal" data-bs-target="#aboutModal">About</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="resume.html" target="_blank"><i class="bi bi-person-lines-fill me-1"></i>Resume</a></li>
                     <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
                         <a class="nav-link contact-btn px-3 rounded" href="https://mail.google.com/mail/?view=cm&to=imaashutoshpandey@gmail.com" target="_blank">
-                            <i class="bi bi-envelope me-1"></i>Contact Me
+                            <i class="bi bi-envelope me-1"></i>Contact
                         </a>
                     </li>
                 </ul>
@@ -39,37 +37,50 @@
 
     <!-- Hero -->
     <section class="hero">
-        <div class="position-relative">
-            <div class="hero-badge">📖 Learning in Public</div>
-            <h1 class="mb-3">My <span class="highlight">System Design</span><br>Journey</h1>
-            <p class="fs-6">Breaking down complex distributed systems into simple concepts — one day at a time.</p>
-            <div class="d-flex justify-content-center gap-3 flex-wrap position-relative">
-                <a href="#articles" class="btn btn-primary fw-semibold px-4">📚 Read Articles</a>
-                <button class="btn btn-hero-outline fw-semibold px-4" data-bs-toggle="modal" data-bs-target="#aboutModal">👨‍💻 About Me</button>
-            </div>
+        <div class="hero-badge">📖 Learning in Public</div>
+        <h1 class="mb-2">My <span class="highlight">System Design</span> Journey</h1>
+        <p>Breaking down complex distributed systems into simple concepts — one day at a time.</p>
+        <div class="d-flex justify-content-center gap-2 flex-wrap">
+            <a href="#articles" class="btn btn-primary btn-sm fw-semibold px-4">📚 Read Articles</a>
+            <button class="btn btn-hero-outline btn-sm fw-semibold px-4" data-bs-toggle="modal" data-bs-target="#aboutModal">👨‍💻 About Me</button>
         </div>
     </section>
 
     <!-- Stats -->
-    <div class="stats-bar py-4">
-        <div class="container-xl">
-            <div class="row justify-content-center text-center g-4">
-                <div class="col-6 col-sm-3"><span class="stat-number">4</span><span class="stat-label">Articles Published</span></div>
-                <div class="col-6 col-sm-3"><span class="stat-number">4</span><span class="stat-label">Days Learning</span></div>
-                <div class="col-6 col-sm-3"><span class="stat-number">30</span><span class="stat-label">Day Goal</span></div>
-                <div class="col-6 col-sm-3"><span class="stat-number">7+</span><span class="stat-label">Years Experience</span></div>
+    <div class="stats-bar">
+        <div class="container px-3 px-md-4">
+            <div class="stats-row">
+                <div class="stat-item">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Articles</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Days Learning</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">30</span>
+                    <span class="stat-label">Day Goal</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">7+</span>
+                    <span class="stat-label">Yrs Experience</span>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Articles -->
-    <div class="container-xl px-4 py-5" id="articles">
+    <div class="container px-3 px-md-4 py-4" id="articles">
 
-        <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
-            <h2 class="fw-bold mb-0" style="color:#1e293b;">📚 Articles</h2>
-            <div class="input-group" style="max-width:260px;">
-                <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
-                <input type="text" id="searchInput" class="form-control border-start-0 search-input" placeholder="Search articles...">
+        <div class="section-header">
+            <h2 class="section-title">📚 Articles</h2>
+            <div class="input-group search-group">
+                <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted" style="font-size:0.8rem;"></i></span>
+                <input type="text" id="searchInput" class="form-control border-start-0 search-input" placeholder="Search...">
             </div>
         </div>
 
@@ -118,83 +129,20 @@
         </div>
 
         <div id="noResults" style="display:none;">
-            <p class="text-center text-muted py-4">No articles match your search.</p>
-        </div>
-
-        <!-- Progress -->
-        <div class="progress-section p-4 mt-4">
-            <div class="d-flex justify-content-between align-items-center mb-2">
-                <span class="fw-semibold" style="color:#475569;">🎯 30-Day Challenge Progress</span>
-                <span class="fw-semibold small" style="color:#475569;">4 / 30 days</span>
-            </div>
-            <div class="progress">
-                <div class="progress-bar" id="progressFill" role="progressbar"></div>
-            </div>
-            <p class="text-muted small mt-2 mb-0">Next up: CDN and cache invalidation strategies</p>
+            <p class="text-center text-muted py-3 small">No articles match your search.</p>
         </div>
 
     </div>
 
-    <!-- Daily Concepts -->
-    <section class="concepts-section py-5" id="concepts">
-        <div class="container-xl px-4">
-            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
-                <div>
-                    <h2 class="fw-bold mb-1" style="color:#1e293b;">💡 Daily Concepts</h2>
-                    <p class="text-muted small mb-0">Quick notes on concepts I pick up every day.</p>
-                </div>
-            </div>
-            <div class="concept-list" id="conceptsList"></div>
-        </div>
-    </section>
-
-    <!-- Important Topics -->
-    <section class="topics-section py-5" id="topics">
-        <div class="container-xl px-4">
-            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
-                <div>
-                    <h2 class="fw-bold mb-1" style="color:#1e293b;">🗂️ Important Topics</h2>
-                    <p class="text-muted small mb-0">Deep dives into core system design areas — each with multiple articles.</p>
-                </div>
-            </div>
-            <div class="topic-list">
-                <a href="topics/databases/index.html" class="topic-list-item">
-                    <div class="tli-icon" style="background:#eff6ff;">🗄️</div>
-                    <span class="tli-title">Databases</span>
-                    <span class="tli-desc d-none d-md-inline">ACID properties, SQL vs NoSQL, indexing, sharding, and replication strategies.</span>
-                    <span class="topic-count" style="background:#eff6ff;color:#2563eb;">Coming soon</span>
-                </a>
-                <a href="topics/caching/index.html" class="topic-list-item">
-                    <div class="tli-icon" style="background:#f0fdf4;">⚡</div>
-                    <span class="tli-title">Caching</span>
-                    <span class="tli-desc d-none d-md-inline">Redis, CDN, cache invalidation strategies, and improving system response times.</span>
-                    <span class="topic-count" style="background:#f0fdf4;color:#16a34a;">Coming soon</span>
-                </a>
-                <a href="topics/networking/index.html" class="topic-list-item">
-                    <div class="tli-icon" style="background:#fff7ed;">🌐</div>
-                    <span class="tli-title">Networking</span>
-                    <span class="tli-desc d-none d-md-inline">DNS, HTTP/HTTPS, TCP vs UDP, WebSockets, and API gateway patterns.</span>
-                    <span class="topic-count" style="background:#fff7ed;color:#ea580c;">Coming soon</span>
-                </a>
-                <a href="topics/messaging/index.html" class="topic-list-item">
-                    <div class="tli-icon" style="background:#fdf4ff;">📨</div>
-                    <span class="tli-title">Messaging Queues</span>
-                    <span class="tli-desc d-none d-md-inline">Kafka, RabbitMQ, event-driven architecture, and async communication patterns.</span>
-                    <span class="topic-count" style="background:#fdf4ff;color:#9333ea;">Coming soon</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
-    <footer class="py-4 text-center mt-4">
+    <footer class="py-3 text-center">
         <div class="container">
             Built with ❤️ by
             <a href="#" data-bs-toggle="modal" data-bs-target="#aboutModal">Ashutosh Pandey</a>
             &nbsp;·&nbsp;
             <a href="https://www.linkedin.com/in/ashutoshpandey13/" target="_blank">LinkedIn</a>
             &nbsp;·&nbsp;
-            <a href="https://mail.google.com/mail/?view=cm&to=imaashutoshpandey@gmail.com" target="_blank">imaashutoshpandey@gmail.com</a>
+            <a href="https://mail.google.com/mail/?view=cm&to=imaashutoshpandey@gmail.com" target="_blank">Email</a>
         </div>
     </footer>
 
@@ -286,7 +234,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="systemDesignSeries/articles.js"></script>
-    <script src="systemDesignSeries/concepts.js"></script>
     <script>
         function renderBlocks(blocks) {
             return blocks.map(block => {
@@ -319,53 +266,8 @@
             });
         });
 
-        // Render concepts
-        (function () {
-            var list = document.getElementById('conceptsList');
-            if (CONCEPTS.length === 0) {
-                list.innerHTML = `<div class="text-center py-4 text-muted">
-                    <div style="font-size:2rem;">💡</div>
-                    <p class="mb-0 mt-2 small fw-semibold">Daily concepts coming soon — check back tomorrow!</p>
-                </div>`;
-                return;
-            }
-            CONCEPTS.forEach(function (c, i) {
-                var item = document.createElement('div');
-                item.className = 'concept-list-item';
-                item.style.cursor = 'pointer';
-                item.dataset.ci = i;
-                item.innerHTML = `
-                    <span class="concept-tag flex-shrink-0">${c.category}</span>
-                    <span class="cli-title">${c.icon} ${c.title}</span>
-                    <span class="cli-note d-none d-md-inline">${c.note}</span>
-                    <span class="concept-date">${c.date}</span>`;
-                list.appendChild(item);
-            });
-
-            list.addEventListener('click', function (e) {
-                var item = e.target.closest('.concept-list-item');
-                if (!item) return;
-                var c = CONCEPTS[parseInt(item.dataset.ci, 10)];
-                if (!c) return;
-                document.getElementById('modalTags').innerHTML =
-                    `<span class="concept-tag">${c.category}</span><span class="modal-tag">${c.date}</span>`;
-                document.getElementById('modalTitle').textContent = c.icon + ' ' + c.title;
-                document.getElementById('modalSubtitle').textContent = '';
-                document.getElementById('modalBody').innerHTML = c.content
-                    ? renderBlocks(c.content)
-                    : `<p>${c.note}</p>`;
-                new bootstrap.Modal(document.getElementById('articleModal')).show();
-            });
-        })();
-
         window.addEventListener('scroll', function () {
             document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
-        });
-
-        window.addEventListener('load', function () {
-            setTimeout(function () {
-                document.getElementById('progressFill').style.width = '13%';
-            }, 400);
         });
 
         document.getElementById('searchInput').addEventListener('input', function () {
