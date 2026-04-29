@@ -6,116 +6,8 @@
     <title>Ashutosh | System Design Journey</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f1f5f9; }
-
-        /* Navbar */
-        .navbar { background: #0f172a; transition: background 0.3s; }
-        .navbar.scrolled { background: #1e293b; }
-        .navbar-brand span { color: #60a5fa; }
-        .nav-link { color: #cbd5e1 !important; border-radius: 6px; }
-        .nav-link:hover { color: white !important; background: #334155; }
-        .contact-btn { background: #2563eb !important; color: white !important; font-weight: 600; }
-        .contact-btn:hover { background: #1d4ed8 !important; }
-
-        /* Hero */
-        .hero {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
-            padding: 80px 20px;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at 50% 0%, rgba(96,165,250,0.15) 0%, transparent 70%);
-        }
-        .hero-badge {
-            display: inline-block;
-            background: rgba(96,165,250,0.15);
-            border: 1px solid rgba(96,165,250,0.4);
-            color: #93c5fd;
-            font-size: 0.78rem;
-            font-weight: 600;
-            padding: 5px 14px;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        .hero h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 800; line-height: 1.2; position: relative; }
-        .hero h1 .highlight { color: #60a5fa; }
-        .hero p { color: #94a3b8; max-width: 540px; margin: 0 auto 28px; line-height: 1.7; position: relative; }
-        .btn-hero-outline {
-            background: transparent;
-            color: white;
-            border: 1px solid rgba(255,255,255,0.3);
-            font-weight: 600;
-        }
-        .btn-hero-outline:hover { background: rgba(255,255,255,0.08); color: white; }
-
-        /* Stats */
-        .stats-bar { background: white; border-bottom: 1px solid #e2e8f0; }
-        .stat-number { font-size: 1.8rem; font-weight: 800; color: #2563eb; display: block; }
-        .stat-label { font-size: 0.75rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
-
-        /* Cards */
-        .card {
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 0.4s forwards;
-        }
-        .card:nth-child(1) { animation-delay: 0.05s; }
-        .card:nth-child(2) { animation-delay: 0.1s; }
-        .card:nth-child(3) { animation-delay: 0.15s; }
-        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-        .card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
-
-        .day-badge { background: #eff6ff; color: #2563eb; font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; }
-        .topic-tag { background: #f1f5f9; color: #64748b; font-size: 0.72rem; padding: 3px 10px; border-radius: 20px; }
-        .card-title-link { color: #1e293b; text-decoration: none; font-weight: 700; cursor: pointer; }
-        .card-title-link:hover { color: #2563eb; }
-        .read-time { font-size: 0.78rem; color: #94a3b8; }
-        .read-btn { background: #eff6ff; color: #2563eb; border: none; padding: 6px 14px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: background 0.2s; }
-        .read-btn:hover { background: #dbeafe; }
-
-        /* Search */
-        .search-input { border-radius: 8px; border: 1px solid #e2e8f0; font-size: 0.9rem; }
-        .search-input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
-
-        /* Progress */
-        .progress-section { background: white; border-radius: 12px; border: 1px solid #e2e8f0; }
-        .progress { height: 10px; border-radius: 100px; background: #f1f5f9; }
-        .progress-bar { background: linear-gradient(90deg, #2563eb, #60a5fa); border-radius: 100px; width: 0; transition: width 1.2s cubic-bezier(0.4,0,0.2,1); }
-
-        /* Modal */
-        .modal-content { border-radius: 16px; border: none; }
-        .modal-tag { display: inline-block; background: #eff6ff; color: #2563eb; font-size: 0.75rem; font-weight: 700; padding: 3px 12px; border-radius: 20px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
-        .modal-title { font-size: 1.3rem; font-weight: 800; color: #0f172a; }
-        .modal-body p, .modal-body li { color: #475569; line-height: 1.75; }
-        .modal-body strong { color: #1e293b; }
-        .modal-header { border-bottom: none; padding-bottom: 0; }
-        .modal-footer { border-top: none; }
-        .btn-close-custom { background: #f1f5f9; border: none; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #64748b; }
-        .btn-close-custom:hover { background: #e2e8f0; color: #1e293b; }
-
-        /* LinkedIn */
-        .linkedin-link { display: inline-flex; align-items: center; gap: 6px; color: #0077b5; text-decoration: none; font-weight: 600; }
-        .linkedin-link svg { width: 20px; height: 20px; fill: #0077b5; }
-
-        /* No results */
-        #noResults { display: none; }
-
-        /* Footer */
-        footer { background: #0f172a; color: #64748b; font-size: 0.85rem; }
-        footer a { color: #60a5fa; text-decoration: none; }
-    </style>
+    <link rel="stylesheet" href="stylesheets/common.css">
+    <link rel="stylesheet" href="stylesheets/home.css">
 </head>
 <body>
 
@@ -130,7 +22,9 @@
                 <ul class="navbar-nav ms-auto align-items-lg-center gap-1 py-2 py-lg-0">
                     <li class="nav-item"><a class="nav-link px-3" href="#">Home</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#articles">Articles</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#topics">Topics</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#" data-bs-toggle="modal" data-bs-target="#aboutModal">About</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="resume.html" target="_blank"><i class="bi bi-person-lines-fill me-1"></i>Resume</a></li>
                     <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
                         <a class="nav-link contact-btn px-3 rounded" href="https://mail.google.com/mail/?view=cm&to=imaashutoshpandey@gmail.com" target="_blank">
                             <i class="bi bi-envelope me-1"></i>Contact Me
@@ -158,8 +52,8 @@
     <div class="stats-bar py-4">
         <div class="container-xl">
             <div class="row justify-content-center text-center g-4">
-                <div class="col-6 col-sm-3"><span class="stat-number">3</span><span class="stat-label">Articles Published</span></div>
-                <div class="col-6 col-sm-3"><span class="stat-number">3</span><span class="stat-label">Days Learning</span></div>
+                <div class="col-6 col-sm-3"><span class="stat-number">4</span><span class="stat-label">Articles Published</span></div>
+                <div class="col-6 col-sm-3"><span class="stat-number">4</span><span class="stat-label">Days Learning</span></div>
                 <div class="col-6 col-sm-3"><span class="stat-number">30</span><span class="stat-label">Day Goal</span></div>
                 <div class="col-6 col-sm-3"><span class="stat-number">7+</span><span class="stat-label">Years Experience</span></div>
             </div>
@@ -180,46 +74,61 @@
         <div class="row g-4" id="cardsGrid">
 
             <div class="col-12 col-sm-6 col-lg-4 card-col" data-title="day 1 basics system design fundamentals">
-                <div class="card h-100 p-3 shadow-sm">
+                <div class="card h-100 p-3 shadow-sm d-flex flex-column article-trigger" data-day="1" style="cursor:pointer;">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <span class="day-badge">Day 1</span>
                         <span class="topic-tag">Fundamentals</span>
                     </div>
-                    <h5 class="card-title-link mb-2" data-bs-toggle="modal" data-bs-target="#day1Modal">Basics of System Design</h5>
+                    <h5 class="card-title-link mb-2">Basics of System Design</h5>
                     <p class="text-muted small flex-grow-1">Understanding core building blocks of scalable systems — the User, Server, and Database triangle.</p>
                     <div class="d-flex justify-content-between align-items-center pt-3 border-top mt-2">
                         <span class="read-time">⏱ 3 min read</span>
-                        <button class="read-btn" data-bs-toggle="modal" data-bs-target="#day1Modal">Read →</button>
+                        <span class="read-btn">Read →</span>
                     </div>
                 </div>
             </div>
 
             <div class="col-12 col-sm-6 col-lg-4 card-col" data-title="day 2 load balancer traffic servers infrastructure">
-                <div class="card h-100 p-3 shadow-sm">
+                <div class="card h-100 p-3 shadow-sm d-flex flex-column article-trigger" data-day="2" style="cursor:pointer;">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <span class="day-badge">Day 2</span>
                         <span class="topic-tag">Infrastructure</span>
                     </div>
-                    <h5 class="card-title-link mb-2" data-bs-toggle="modal" data-bs-target="#day2Modal">Load Balancer</h5>
+                    <h5 class="card-title-link mb-2">Load Balancer</h5>
                     <p class="text-muted small flex-grow-1">How systems distribute traffic across multiple servers to avoid crashes and stay highly available.</p>
                     <div class="d-flex justify-content-between align-items-center pt-3 border-top mt-2">
                         <span class="read-time">⏱ 4 min read</span>
-                        <button class="read-btn" data-bs-toggle="modal" data-bs-target="#day2Modal">Read →</button>
+                        <span class="read-btn">Read →</span>
                     </div>
                 </div>
             </div>
 
             <div class="col-12 col-sm-6 col-lg-4 card-col" data-title="day 3 scaling horizontal vertical scalability">
-                <div class="card h-100 p-3 shadow-sm">
+                <div class="card h-100 p-3 shadow-sm d-flex flex-column article-trigger" data-day="3" style="cursor:pointer;">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <span class="day-badge">Day 3</span>
                         <span class="topic-tag">Scalability</span>
                     </div>
-                    <h5 class="card-title-link mb-2" data-bs-toggle="modal" data-bs-target="#day3Modal">Scaling — Horizontal vs Vertical</h5>
+                    <h5 class="card-title-link mb-2">Scaling — Horizontal vs Vertical</h5>
                     <p class="text-muted small flex-grow-1">Two approaches to handling growth: scaling up a single machine or scaling out across many.</p>
                     <div class="d-flex justify-content-between align-items-center pt-3 border-top mt-2">
                         <span class="read-time">⏱ 4 min read</span>
-                        <button class="read-btn" data-bs-toggle="modal" data-bs-target="#day3Modal">Read →</button>
+                        <span class="read-btn">Read →</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 card-col" data-title="day 4 caching redis performance instant apps">
+                <div class="card h-100 p-3 shadow-sm d-flex flex-column article-trigger" data-day="4" style="cursor:pointer;">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="day-badge">Day 4</span>
+                        <span class="topic-tag">Performance</span>
+                    </div>
+                    <h5 class="card-title-link mb-2">Caching — The Secret to Instant Apps</h5>
+                    <p class="text-muted small flex-grow-1">Why some apps feel instant and how storing data in memory with Redis can make your system dramatically faster.</p>
+                    <div class="d-flex justify-content-between align-items-center pt-3 border-top mt-2">
+                        <span class="read-time">⏱ 3 min read</span>
+                        <span class="read-btn">Read →</span>
                     </div>
                 </div>
             </div>
@@ -234,15 +143,80 @@
         <div class="progress-section p-4 mt-5">
             <div class="d-flex justify-content-between align-items-center mb-2">
                 <span class="fw-semibold" style="color:#475569;">🎯 30-Day Challenge Progress</span>
-                <span class="fw-semibold small" style="color:#475569;">3 / 30 days</span>
+                <span class="fw-semibold small" style="color:#475569;">4 / 30 days</span>
             </div>
             <div class="progress">
                 <div class="progress-bar" id="progressFill" role="progressbar"></div>
             </div>
-            <p class="text-muted small mt-2 mb-0">Next up: Caching strategies and CDN fundamentals</p>
+            <p class="text-muted small mt-2 mb-0">Next up: CDN and cache invalidation strategies</p>
         </div>
 
     </div>
+
+    <!-- Important Topics -->
+    <section class="topics-section py-5" id="topics">
+        <div class="container-xl px-4">
+
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
+                <div>
+                    <h2 class="fw-bold mb-1" style="color:#1e293b;">🗂️ Important Topics</h2>
+                    <p class="text-muted small mb-0">Deep dives into core system design areas — each with multiple articles.</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <a href="topics/databases/index.html" class="topic-card h-100">
+                        <div class="topic-icon" style="background:#eff6ff;">🗄️</div>
+                        <h5>Databases</h5>
+                        <p>ACID properties, SQL vs NoSQL, indexing, sharding, and replication strategies.</p>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <span class="topic-count" style="background:#eff6ff;color:#2563eb;">2 articles</span>
+                            <span class="topic-explore">Explore →</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <a href="topics/caching/index.html" class="topic-card h-100">
+                        <div class="topic-icon" style="background:#f0fdf4;">⚡</div>
+                        <h5>Caching</h5>
+                        <p>Redis, CDN, cache invalidation strategies, and improving system response times.</p>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <span class="topic-count" style="background:#f0fdf4;color:#16a34a;">Coming soon</span>
+                            <span class="topic-explore">Explore →</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <a href="topics/networking/index.html" class="topic-card h-100">
+                        <div class="topic-icon" style="background:#fff7ed;">🌐</div>
+                        <h5>Networking</h5>
+                        <p>DNS, HTTP/HTTPS, TCP vs UDP, WebSockets, and API gateway patterns.</p>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <span class="topic-count" style="background:#fff7ed;color:#ea580c;">Coming soon</span>
+                            <span class="topic-explore">Explore →</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <a href="topics/messaging/index.html" class="topic-card h-100">
+                        <div class="topic-icon" style="background:#fdf4ff;">📨</div>
+                        <h5>Messaging Queues</h5>
+                        <p>Kafka, RabbitMQ, event-driven architecture, and async communication patterns.</p>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <span class="topic-count" style="background:#fdf4ff;color:#9333ea;">Coming soon</span>
+                            <span class="topic-explore">Explore →</span>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="py-4 text-center mt-4">
@@ -256,75 +230,19 @@
         </div>
     </footer>
 
-    <!-- Day 1 Modal -->
-    <div class="modal fade" id="day1Modal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <!-- Article Modal -->
+    <div class="modal fade" id="articleModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
             <div class="modal-content p-2">
-                <div class="modal-header">
+                <div class="modal-header border-0 pb-0">
                     <div>
-                        <span class="modal-tag">Day 1 · Fundamentals</span>
-                        <h5 class="modal-title mt-1">Basics of System Design</h5>
+                        <div class="d-flex gap-2 mb-1 flex-wrap" id="modalTags"></div>
+                        <h5 class="modal-title fw-bold" id="modalTitle"></h5>
+                        <p class="text-muted small mb-0" id="modalSubtitle"></p>
                     </div>
-                    <button class="btn-close-custom ms-auto" data-bs-dismiss="modal">✕</button>
+                    <button class="btn-close-custom ms-3 flex-shrink-0" data-bs-dismiss="modal">✕</button>
                 </div>
-                <div class="modal-body">
-                    <p>Today I started reading the basics of System Design. 🚀 Initially, it felt overwhelming, but I realized it's actually built on simple concepts. At its core, every system has three main parts:</p>
-                    <p><strong>User → Server → Database</strong></p>
-                    <p>The user sends a request, the server processes it, and the database stores or retrieves data. But things get interesting when scale increases. If millions of users hit a single server, it can crash. That's where load balancing and horizontal scaling come in.</p>
-                    <p>A simple analogy: A server is like a restaurant kitchen. If too many orders come in, one chef can't handle it. So we add more chefs (servers) and distribute the workload.</p>
-                    <p><strong>Big learning today:</strong> System design is not about complex tools — it's about solving simple problems at scale. 🚀</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Day 2 Modal -->
-    <div class="modal fade" id="day2Modal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content p-2">
-                <div class="modal-header">
-                    <div>
-                        <span class="modal-tag">Day 2 · Infrastructure</span>
-                        <h5 class="modal-title mt-1">Load Balancer</h5>
-                    </div>
-                    <button class="btn-close-custom ms-auto" data-bs-dismiss="modal">✕</button>
-                </div>
-                <div class="modal-body">
-                    <p>🚀 Today I learned about Load Balancers. Imagine thousands of users trying to access a website at the same time. If all requests go to a single server, it can easily crash. That's where a Load Balancer comes in.</p>
-                    <p><strong>User → Load Balancer → Multiple Servers</strong></p>
-                    <p>A simple analogy: Think of a load balancer as a receptionist in an office. When people arrive, the receptionist directs them to available staff instead of overloading one person.</p>
-                    <p>This improves:<br>✅ Performance<br>✅ Availability<br>✅ Reliability</p>
-                    <p>Some common strategies:</p>
-                    <ul>
-                        <li>Round Robin (one-by-one distribution)</li>
-                        <li>Least Connections (send to least busy server)</li>
-                    </ul>
-                    <p>💡 <strong>Key takeaway:</strong> A load balancer ensures no single server becomes a bottleneck.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Day 3 Modal -->
-    <div class="modal fade" id="day3Modal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content p-2">
-                <div class="modal-header">
-                    <div>
-                        <span class="modal-tag">Day 3 · Scalability</span>
-                        <h5 class="modal-title mt-1">Scaling — Horizontal vs Vertical</h5>
-                    </div>
-                    <button class="btn-close-custom ms-auto" data-bs-dismiss="modal">✕</button>
-                </div>
-                <div class="modal-body">
-                    <p>🚀 Today I learned about Horizontal vs Vertical Scaling. As systems grow, handling more users becomes a challenge. There are two ways to scale:</p>
-                    <p>🔹 <strong>Vertical Scaling (Scale Up)</strong><br>Increase the power of a single server (more CPU, RAM)</p>
-                    <p>🔹 <strong>Horizontal Scaling (Scale Out)</strong><br>Add more servers and distribute the load</p>
-                    <p><strong>User → Load Balancer → Multiple Servers</strong></p>
-                    <p>A simple analogy:<br>Vertical scaling = upgrading your bike to a faster one.<br>Horizontal scaling = adding more bikes for more deliveries.</p>
-                    <p>✅ Handles massive traffic<br>✅ Improves availability<br>✅ Avoids single point of failure</p>
-                    <p>💡 <strong>Key takeaway:</strong> Scaling is not just about power — it's about distributing load efficiently.</p>
-                </div>
+                <div class="modal-body pt-3" id="modalBody"></div>
             </div>
         </div>
     </div>
@@ -364,27 +282,55 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="systemDesignSeries/articles.js"></script>
     <script>
-        // Sticky navbar
-        window.addEventListener('scroll', function() {
+        function renderBlocks(blocks) {
+            return blocks.map(block => {
+                switch (block.type) {
+                    case 'text':      return `<p>${block.value}</p>`;
+                    case 'heading':   return `<h5 class="fw-bold mt-4 mb-3" style="color:#1e293b;">${block.value}</h5>`;
+                    case 'flow':      return `<div class="highlight-box my-4">${block.value}</div>`;
+                    case 'list':      return `<ul>${block.value.map(i => `<li>${i}</li>`).join('')}</ul>`;
+                    case 'checklist': return `<ul class="check-list">${block.value.map(i => `<li>✅ ${i}</li>`).join('')}</ul>`;
+                    case 'takeaway':  return `<h5 class="fw-bold mt-4 mb-3" style="color:#1e293b;">💡 Key Takeaway</h5><p>${block.value}</p>`;
+                    case 'cards':     return `<div class="row g-3 my-4">${block.value.map(c =>
+                        `<div class="col-12 col-sm-6"><div class="scale-card h-100"><h6>${c.title}</h6><p class="mb-0 small">${c.text}</p></div></div>`
+                    ).join('')}</div>`;
+                    default: return '';
+                }
+            }).join('');
+        }
+
+        document.querySelectorAll('.article-trigger').forEach(card => {
+            card.addEventListener('click', function () {
+                const day = parseInt(this.dataset.day, 10);
+                const article = ARTICLES.find(a => a.day === day);
+                if (!article) return;
+                document.getElementById('modalTags').innerHTML =
+                    `<span class="day-badge">Day ${article.day}</span><span class="modal-tag">${article.tag}</span><span class="modal-tag">⏱ ${article.readTime} read</span>`;
+                document.getElementById('modalTitle').textContent = article.title;
+                document.getElementById('modalSubtitle').textContent = article.subtitle;
+                document.getElementById('modalBody').innerHTML = renderBlocks(article.content);
+                new bootstrap.Modal(document.getElementById('articleModal')).show();
+            });
+        });
+
+        window.addEventListener('scroll', function () {
             document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
         });
 
-        // Animate progress bar
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('progressFill').style.width = '10%';
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                document.getElementById('progressFill').style.width = '13%';
             }, 400);
         });
 
-        // Search filter
-        document.getElementById('searchInput').addEventListener('input', function() {
+        document.getElementById('searchInput').addEventListener('input', function () {
             var q = this.value.toLowerCase();
             var cols = document.querySelectorAll('.card-col');
             var visible = 0;
-            cols.forEach(function(col) {
-                var text = col.dataset.title + ' ' + col.innerText.toLowerCase();
-                var show = text.includes(q);
+            cols.forEach(function (col) {
+                var show = (col.dataset.title + ' ' + col.innerText.toLowerCase()).includes(q);
                 col.style.display = show ? '' : 'none';
                 if (show) visible++;
             });
