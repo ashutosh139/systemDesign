@@ -178,12 +178,34 @@
 .btn-close-custom { background: #f1f5f9; border: none; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #64748b; font-size: 0.8rem; flex-shrink: 0; }
 .btn-close-custom:hover { background: #e2e8f0; color: #1e293b; }
 
-/* About modal pills */
-.about-pill { display: inline-block; background: #f1f5f9; color: #475569; border-radius: 20px; padding: 2px 10px; margin: 2px 3px 2px 0; font-size: 0.75rem; }
+/* About modal */
+.about-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, #2563eb, #60a5fa);
+    color: white; font-weight: 800; font-size: 0.9rem;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+.about-bio { font-size: 0.85rem; color: #475569; line-height: 1.65; margin-bottom: 16px; }
+.about-section-label { font-size: 0.72rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+.about-timeline { display: flex; flex-direction: column; gap: 12px; }
+.about-exp { padding: 10px 12px; background: #f8fafc; border: 1px solid #e2e8f0; border-left: 3px solid #2563eb; border-radius: 0 8px 8px 0; }
+.about-exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 4px; margin-bottom: 4px; }
+.about-role { font-weight: 700; color: #0f172a; font-size: 0.83rem; }
+.about-company { color: #2563eb; font-weight: 600; font-size: 0.83rem; }
+.about-date { font-size: 0.72rem; color: #94a3b8; background: #f1f5f9; padding: 1px 8px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
+.about-exp-desc { font-size: 0.8rem; color: #64748b; line-height: 1.55; margin: 0; }
+.about-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+.about-pill { background: #f1f5f9; color: #475569; border-radius: 20px; padding: 3px 10px; font-size: 0.73rem; font-weight: 500; }
+.about-links { display: flex; gap: 8px; flex-wrap: wrap; }
+.about-link-btn {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 6px 14px; border-radius: 8px; font-size: 0.8rem; font-weight: 600;
+    background: #f1f5f9; color: #1e293b; text-decoration: none;
+    border: 1px solid #e2e8f0; transition: background 0.15s, border-color 0.15s;
+}
+.about-link-btn:hover { background: #e2e8f0; color: #0f172a; border-color: #cbd5e1; }
 
-/* LinkedIn */
-.linkedin-link { display: inline-flex; align-items: center; gap: 6px; color: #0077b5; text-decoration: none; font-weight: 600; font-size: 0.9rem; }
-.linkedin-link svg { width: 18px; height: 18px; fill: #0077b5; }
 
 /* Article modal content blocks */
 .highlight-box { background: #f8fafc; border-left: 3px solid #2563eb; padding: 10px 16px; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #1e293b; font-weight: 500; }
