@@ -1,1 +1,72 @@
 
+/* ── Article pages (day pages + topic article pages) ── */
+
+/* Header banner */
+.article-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+    color: white;
+    padding: 60px 20px 40px;
+}
+
+/* Header badges */
+.day-badge {
+    background: rgba(96,165,250,0.15);
+    border: 1px solid rgba(96,165,250,0.4);
+    color: #93c5fd;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.topic-badge {
+    background: rgba(96,165,250,0.15);
+    border: 1px solid rgba(96,165,250,0.4);
+    color: #93c5fd;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.tag {
+    background: rgba(255,255,255,0.1);
+    color: #cbd5e1;
+    font-size: 0.78rem;
+    padding: 5px 12px;
+    border-radius: 20px;
+}
+
+/* Article body */
+.article-body { background: white; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+.article-body p, .article-body li { color: #475569; line-height: 1.8; font-size: 1rem; }
+.article-body strong { color: #1e293b; }
+
+/* Highlight box */
+.highlight-box {
+    background: #eff6ff;
+    border-left: 4px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    color: #1e40af;
+    font-weight: 600;
+}
+
+/* Scale cards (day3) */
+.scale-card { border: 1px solid #e2e8f0; border-radius: 10px; padding: 18px; }
+.scale-card h6 { color: #1e293b; font-weight: 700; }
+
+/* ACID cards */
+.acid-card { border: 1px solid #e2e8f0; border-radius: 10px; padding: 18px; }
+.acid-card h6 { font-weight: 700; color: #1e293b; margin-bottom: 6px; }
+
+/* Compare cards (SQL vs NoSQL) */
+.compare-card { border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; }
+.compare-card h6 { font-weight: 700; margin-bottom: 10px; }
+.use-case-pill { background: #f1f5f9; color: #475569; font-size: 0.78rem; padding: 4px 12px; border-radius: 20px; display: inline-block; margin: 3px 2px; }
+
+/* Check list */
+.check-list { list-style: none; padding-left: 0; }
+.check-list li { padding: 4px 0; color: #475569; }
