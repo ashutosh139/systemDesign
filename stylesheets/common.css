@@ -1,0 +1,24 @@
+/* ── Shared across all pages ── */
+
+body {
+    background: #f1f5f9;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Navbar */
+.navbar { background: #0f172a; }
+.navbar.scrolled { background: #1e293b; }
+.navbar-brand span { color: #60a5fa; }
+.nav-link { color: #cbd5e1 !important; border-radius: 6px; }
+.nav-link:hover { color: white !important; background: #334155; }
+
+.contact-btn { background: #2563eb !important; color: white !important; font-weight: 600; }
+.contact-btn:hover { background: #1d4ed8 !important; }
+
+/* Back button */
+.back-btn { color: #2563eb; text-decoration: none; font-weight: 600; }
+.back-btn:hover { color: #1d4ed8; }
+
+/* Footer */
+footer { background: #0f172a; color: #64748b; font-size: 0.85rem; }
+footer a { color: #60a5fa; text-decoration: none; }
