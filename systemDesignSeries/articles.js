@@ -1,4 +1,3 @@
-
 // ─────────────────────────────────────────────────────────────────────────────
 // HOW TO ADD A NEW DAY — no HTML, no CSS, just content:
 //
@@ -73,8 +72,6 @@ const ARTICLES = [
     ]
   },
 
-  // ── ADD NEW DAYS BELOW ────────────────────────────────────────────────────
-
   {
     day: 4,
     title: "Caching — The Secret to Instant Apps",
@@ -91,6 +88,34 @@ const ARTICLES = [
       { type: "heading",   value: "⚖️ Trade-offs" },
       { type: "list",      value: ["Fast performance ✅", "Risk of stale data ❌"] },
       { type: "takeaway",  value: "Caching trades <strong>freshness for speed</strong> — use it for data that's read often and doesn't change frequently." },
+    ]
+  },
+
+  // ── ADD NEW DAYS BELOW ────────────────────────────────────────────────────
+
+  {
+    day: 5,
+    title: "Message Queues — How Systems Handle Millions of Requests",
+    subtitle: "Why Kafka and message queues are the backbone of every scalable system.",
+    tag: "Distributed Systems",
+    readTime: "4 min",
+    content: [
+      { type: "text",     value: "🚀 I finally understood how systems handle <strong>millions of requests</strong> without crashing. The answer is: <strong>Message Queues</strong> (like Kafka)." },
+      { type: "heading",  value: "❌ Without Queues" },
+      { type: "flow",     value: "User → API → DB + Email + SMS" },
+      { type: "text",     value: "Everything happens synchronously — the user waits for every step to finish. This is slow, fragile, and falls apart under load." },
+      { type: "heading",  value: "✅ With Kafka" },
+      { type: "flow",     value: "User → API → Queue → Workers" },
+      { type: "list",     value: [
+        "API responds instantly ⚡",
+        "Heavy work happens in the background",
+        "System absorbs traffic spikes without crashing"
+      ]},
+      { type: "heading",  value: "💡 Real Example" },
+      { type: "text",     value: "When you place an order on Amazon, three things need to happen — payment, confirmation email, and inventory update. None of these block your checkout screen. They're all processed <strong>asynchronously</strong> through queues." },
+      { type: "heading",  value: "⚖️ Trade-offs" },
+      { type: "checklist", value: ["Scalable & reliable — handles millions of events ✅", "Decouples producers from consumers ✅", "Slight processing delay compared to synchronous calls ❌"] },
+      { type: "takeaway", value: "Queues turn <strong>traffic spikes into smooth, reliable processing</strong> — the secret weapon behind every high-scale system." },
     ]
   },
 
