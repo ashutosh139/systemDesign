@@ -37,12 +37,15 @@
 
     <!-- Hero -->
     <section class="hero">
-        <div class="hero-badge">📖 Learning in Public</div>
-        <h1 class="mb-2">My <span class="highlight">System Design</span> Journey</h1>
-        <p>Breaking down complex distributed systems into simple concepts — one day at a time.</p>
-        <div class="d-flex justify-content-center gap-2 flex-wrap">
-            <a href="#articles" class="btn btn-primary btn-sm fw-semibold px-4">📚 Read Articles</a>
-            <button class="btn btn-hero-outline btn-sm fw-semibold px-4" data-bs-toggle="modal" data-bs-target="#aboutModal">👨‍💻 About Me</button>
+        <canvas id="heroCanvas" class="hero-canvas"></canvas>
+        <div class="hero-content">
+            <div class="hero-badge">📖 Learning in Public</div>
+            <h1 class="mb-2">My <span class="highlight">System Design</span> Journey</h1>
+            <p>Breaking down complex distributed systems into simple concepts — one day at a time.</p>
+            <div class="d-flex justify-content-center gap-2 flex-wrap">
+                <a href="#articles" class="btn btn-primary btn-sm fw-semibold px-4">📚 Read Articles</a>
+                <button class="btn btn-hero-outline btn-sm fw-semibold px-4" data-bs-toggle="modal" data-bs-target="#aboutModal">👨‍💻 About Me</button>
+            </div>
         </div>
     </section>
 
@@ -51,12 +54,12 @@
         <div class="container px-3 px-md-4">
             <div class="stats-row">
                 <div class="stat-item">
-                    <span class="stat-number">4</span>
+                    <span class="stat-number">5</span>
                     <span class="stat-label">Articles</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat-item">
-                    <span class="stat-number">4</span>
+                    <span class="stat-number">5</span>
                     <span class="stat-label">Days Learning</span>
                 </div>
                 <div class="stat-divider"></div>
@@ -85,6 +88,16 @@
         </div>
 
         <div class="article-list" id="articleList">
+
+            <div class="article-list-item article-trigger" data-day="5" data-title="day 5 message queues kafka distributed systems backend">
+                <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                    <span class="day-badge">Day 5</span>
+                    <span class="topic-tag d-none d-sm-inline">Distributed Systems</span>
+                </div>
+                <span class="ali-title">Message Queues — How Systems Handle Millions of Requests</span>
+                <span class="read-time d-none d-md-inline">⏱ 4 min</span>
+                <span class="read-btn">Read →</span>
+            </div>
 
             <div class="article-list-item article-trigger" data-day="1" data-title="day 1 basics system design fundamentals">
                 <div class="d-flex align-items-center gap-2 flex-shrink-0">
@@ -285,6 +298,69 @@
         window.addEventListener('scroll', function () {
             document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
         });
+
+        // Hero network animation
+        (function () {
+            var canvas = document.getElementById('heroCanvas');
+            var ctx = canvas.getContext('2d');
+            var nodes = [];
+            var MAX_DIST = 130;
+
+            function resize() {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+            }
+
+            function init() {
+                nodes = [];
+                var count = Math.max(18, Math.floor((canvas.width * canvas.height) / 12000));
+                for (var i = 0; i < count; i++) {
+                    nodes.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        vx: (Math.random() - 0.5) * 0.35,
+                        vy: (Math.random() - 0.5) * 0.35,
+                        r: Math.random() * 1.8 + 1
+                    });
+                }
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (var i = 0; i < nodes.length; i++) {
+                    for (var j = i + 1; j < nodes.length; j++) {
+                        var dx = nodes[i].x - nodes[j].x;
+                        var dy = nodes[i].y - nodes[j].y;
+                        var dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < MAX_DIST) {
+                            ctx.beginPath();
+                            ctx.strokeStyle = 'rgba(96,165,250,' + (0.28 * (1 - dist / MAX_DIST)) + ')';
+                            ctx.lineWidth = 0.7;
+                            ctx.moveTo(nodes[i].x, nodes[i].y);
+                            ctx.lineTo(nodes[j].x, nodes[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                for (var k = 0; k < nodes.length; k++) {
+                    var n = nodes[k];
+                    ctx.beginPath();
+                    ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(96,165,250,0.75)';
+                    ctx.fill();
+                    n.x += n.vx;
+                    n.y += n.vy;
+                    if (n.x < 0 || n.x > canvas.width)  n.vx *= -1;
+                    if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+                }
+                requestAnimationFrame(draw);
+            }
+
+            resize();
+            init();
+            draw();
+            window.addEventListener('resize', function () { resize(); init(); });
+        })();
 
         document.getElementById('searchInput').addEventListener('input', function () {
             var q = this.value.toLowerCase();
