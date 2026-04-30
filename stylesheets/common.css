@@ -1,7 +1,9 @@
 /* ── Shared across all pages ── */
 
 body {
-    background: #f1f5f9;
+    background-color: #f1f5f9;
+    background-image: radial-gradient(circle, #b0bec5 1px, transparent 1px);
+    background-size: 24px 24px;
     font-family: 'Segoe UI', Arial, sans-serif;
 }
 
