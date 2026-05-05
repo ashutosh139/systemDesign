@@ -89,6 +89,16 @@
 
         <div class="article-list" id="articleList">
 
+            <div class="article-list-item article-trigger" data-day="101" data-title="reverse proxy load balancer api gateway fundamentals basics microservices">
+                <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                    <span class="basics-badge">Basics</span>
+                    <span class="topic-tag d-none d-sm-inline">Fundamentals</span>
+                </div>
+                <span class="ali-title">Reverse Proxy vs Load Balancer vs API Gateway</span>
+                <span class="read-time d-none d-md-inline">⏱ 3 min</span>
+                <span class="read-btn">Read →</span>
+            </div>
+
             <div class="article-list-item article-trigger" data-day="5" data-title="day 5 message queues kafka distributed systems backend">
                 <div class="d-flex align-items-center gap-2 flex-shrink-0">
                     <span class="day-badge">Day 5</span>
@@ -291,7 +301,7 @@
                 document.getElementById('modalTitle').textContent = article.title;
                 document.getElementById('modalSubtitle').textContent = article.subtitle || '';
                 document.getElementById('modalBody').innerHTML = renderBlocks(article.content);
-                new bootstrap.Modal(document.getElementById('articleModal')).show();
+                bootstrap.Modal.getOrCreateInstance(document.getElementById('articleModal')).show();
             });
         });
 
