@@ -72,22 +72,63 @@ const ARTICLES = [
     ]
   },
 
+  // ── BONUS / CONCEPT ARTICLES (no day number) ─────────────────────────────
+
   {
-    day: 4,
-    title: "Caching — The Secret to Instant Apps",
-    subtitle: "Why some apps feel instant and how caching makes it possible.",
-    tag: "Performance",
-    readTime: "3 min",
+    day: 101,
+    title: "Reverse Proxy vs Load Balancer vs API Gateway",
+    subtitle: "Three tools that look similar but serve very different purposes.",
+    tag: "Fundamentals",
+    readTime: "4 min",
     content: [
-      { type: "text",      value: "I finally understood why some apps feel instant ⚡ The answer is <strong>Caching</strong>." },
-      { type: "text",      value: "Instead of hitting the database every time (which is slow), systems store frequently used data in memory — like Redis." },
-      { type: "flow",      value: "User → Server → Cache → Database" },
-      { type: "list",      value: ["If data is in cache → serve it super fast ⚡", "If not → fetch from DB, store it in cache for next time"] },
-      { type: "heading",   value: "💡 Real Example" },
-      { type: "text",      value: "Your Instagram feed loads instantly because posts are cached — you're not waiting for a database query every time you open the app." },
-      { type: "heading",   value: "⚖️ Trade-offs" },
-      { type: "list",      value: ["Fast performance ✅", "Risk of stale data ❌"] },
-      { type: "takeaway",  value: "Caching trades <strong>freshness for speed</strong> — use it for data that's read often and doesn't change frequently." },
+      { type: "text",     value: "🚀 I used to think Reverse Proxy, Load Balancer, and API Gateway were the same thing. They're not — and understanding the difference cleared a big gap in my system design fundamentals." },
+
+      { type: "heading",  value: "🔹 Reverse Proxy" },
+      { type: "flow",     value: "User → Reverse Proxy → Backend Server" },
+      { type: "text",     value: "A reverse proxy sits in front of your backend and <strong>forwards client requests</strong> to the right server. Clients never talk to backend servers directly — they only see the proxy." },
+      { type: "checklist", value: [
+        "SSL termination — decrypts HTTPS so backend servers don't have to",
+        "Caching — serves repeated responses without hitting the server",
+        "Security — hides backend IPs, blocks malicious traffic",
+        "Compression — reduces payload size before sending to the client"
+      ]},
+      { type: "text",     value: "Think of it as a <strong>receptionist</strong> — it takes every call and routes it internally, shielding the team behind it." },
+
+      { type: "heading",  value: "🔹 Load Balancer" },
+      { type: "flow",     value: "User → Load Balancer → Server 1 / Server 2 / Server 3" },
+      { type: "text",     value: "A load balancer distributes incoming traffic across multiple servers so no single server gets overwhelmed. It's about <strong>scale and availability</strong>, not just forwarding." },
+      { type: "list",     value: [
+        "<strong>Round Robin</strong> — rotates requests evenly across all servers",
+        "<strong>Least Connections</strong> — sends new requests to the server with fewest active connections",
+        "<strong>IP Hash</strong> — routes the same client to the same server (useful for sessions)"
+      ]},
+      { type: "checklist", value: [
+        "Eliminates single points of failure",
+        "Enables horizontal scaling — add more servers transparently",
+        "Improves availability — unhealthy servers are automatically removed"
+      ]},
+
+      { type: "heading",  value: "🔹 API Gateway" },
+      { type: "flow",     value: "User → API Gateway → Microservice A / B / C" },
+      { type: "text",     value: "An API Gateway is the <strong>single entry point</strong> for all client requests in a microservices architecture. It does far more than route traffic." },
+      { type: "list",     value: [
+        "<strong>Authentication & Authorization</strong> — validates tokens before requests reach services",
+        "<strong>Rate Limiting</strong> — prevents abuse by capping requests per client",
+        "<strong>Request Transformation</strong> — translates between REST, GraphQL, gRPC as needed",
+        "<strong>Response Aggregation</strong> — combines data from multiple services into one response",
+        "<strong>Routing</strong> — directs requests to the correct microservice"
+      ]},
+      { type: "text",     value: "Without a gateway, every microservice would need its own auth, rate limiting, and routing logic — repeated across dozens of services. The gateway centralizes all of it." },
+
+      { type: "heading",  value: "💡 How They Work Together in a Real System" },
+      { type: "flow",     value: "User → Load Balancer → API Gateway → Microservices" },
+      { type: "cards",    value: [
+        { title: "Reverse Proxy",  text: "Forwarding + Protection — hides servers, handles SSL termination, caching, and compression." },
+        { title: "Load Balancer",  text: "Distribution + Scalability — spreads traffic, enables horizontal scaling, prevents failure." },
+        { title: "API Gateway",    text: "Central Control — auth, rate limiting, routing, and response aggregation in one layer." }
+      ]},
+
+      { type: "takeaway", value: "These three often work together — but confusing their roles in a system design interview will cost you. Know the job each one does." },
     ]
   },
 
@@ -116,6 +157,25 @@ const ARTICLES = [
       { type: "heading",  value: "⚖️ Trade-offs" },
       { type: "checklist", value: ["Scalable & reliable — handles millions of events ✅", "Decouples producers from consumers ✅", "Slight processing delay compared to synchronous calls ❌"] },
       { type: "takeaway", value: "Queues turn <strong>traffic spikes into smooth, reliable processing</strong> — the secret weapon behind every high-scale system." },
+    ]
+  },
+
+  {
+    day: 4,
+    title: "Caching — The Secret to Instant Apps",
+    subtitle: "Why some apps feel instant and how caching makes it possible.",
+    tag: "Performance",
+    readTime: "3 min",
+    content: [
+      { type: "text",      value: "I finally understood why some apps feel instant ⚡ The answer is <strong>Caching</strong>." },
+      { type: "text",      value: "Instead of hitting the database every time (which is slow), systems store frequently used data in memory — like Redis." },
+      { type: "flow",      value: "User → Server → Cache → Database" },
+      { type: "list",      value: ["If data is in cache → serve it super fast ⚡", "If not → fetch from DB, store it in cache for next time"] },
+      { type: "heading",   value: "💡 Real Example" },
+      { type: "text",      value: "Your Instagram feed loads instantly because posts are cached — you're not waiting for a database query every time you open the app." },
+      { type: "heading",   value: "⚖️ Trade-offs" },
+      { type: "list",      value: ["Fast performance ✅", "Risk of stale data ❌"] },
+      { type: "takeaway",  value: "Caching trades <strong>freshness for speed</strong> — use it for data that's read often and doesn't change frequently." },
     ]
   },
 
