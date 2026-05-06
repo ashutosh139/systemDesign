@@ -179,4 +179,31 @@ const ARTICLES = [
     ]
   },
 
+  {
+        date: "May 6, 2025",
+        category: "Clean Code",
+        icon: "🧱",
+        title: "SOLID Principles",
+        note: "Why some codebases scale beautifully — and others break with every new feature.",
+        content: [
+            { type: "text", value: "🚀 I finally understood why some codebases scale beautifully… while others break with every new feature. The difference often comes down to <strong>SOLID principles</strong>." },
+            { type: "text", value: "SOLID isn't just theory — it's a practical way to write <strong>clean, maintainable, and scalable code</strong>." },
+            { type: "cards", value: [
+                { title: "S — Single Responsibility", text: "A class should have only one reason to change. Split business logic, database access, and logging into separate classes." },
+                { title: "O — Open/Closed", text: "Code should be open for extension, closed for modification. Add new classes instead of modifying existing ones for every new feature." },
+                { title: "L — Liskov Substitution", text: "Child classes should behave correctly when used as the parent. If replacing a base class breaks behavior, the design is wrong." },
+                { title: "I — Interface Segregation", text: "Don't force classes to implement methods they don't need. Break large interfaces into smaller, focused ones." }
+            ]},
+            { type: "heading", value: "🔹 D — Dependency Inversion Principle" },
+            { type: "text", value: "Depend on abstractions, not concrete implementations. Use interfaces and dependency injection." },
+            { type: "checklist", value: ["Loose coupling", "Easier testing", "Better scalability"] },
+            { type: "heading", value: "⚖️ Real-World Impact" },
+            { type: "cards", value: [
+                { title: "❌ Without SOLID", text: "Tight coupling · Hard to scale · Difficult to test" },
+                { title: "✅ With SOLID", text: "Clean architecture · Easy to extend · Better team collaboration" }
+            ]},
+            { type: "takeaway", value: "SOLID is not about writing more code — it's about writing code that survives change and growth." }
+        ]
+    },
+
 ];
