@@ -75,6 +75,78 @@ const ARTICLES = [
   // ── BONUS / CONCEPT ARTICLES (no day number) ─────────────────────────────
 
   {
+    day: 103,
+    title: "Interface vs Abstract Class",
+    subtitle: "Both enable abstraction — but they solve different problems.",
+    tag: "Clean Code",
+    readTime: "3 min",
+    content: [
+      { type: "text",    value: "🚀 I used to get confused between Interface and Abstract Class. Both are used for abstraction… but they solve <strong>different problems</strong>." },
+      { type: "cards",   value: [
+        { title: "🔹 Interface → WHAT to do",       text: "Defines a contract only. Every implementation decides how to fulfill it. Flexible and loosely coupled." },
+        { title: "🔹 Abstract Class → WHAT + SOME HOW", text: "Provides a contract plus shared logic. Common behaviour lives here; specific behaviour is overridden." }
+      ]},
+
+      { type: "heading", value: "🔹 Interface — Contract Only" },
+      { type: "text",    value: "An interface defines <strong>what</strong> a class must do, nothing more. Each implementation decides <em>how</em>." },
+      { type: "code",    value: `interface IPayment {\n    void Pay();\n}\n\nclass CreditCardPayment : IPayment {\n    public void Pay() { /* credit card logic */ }\n}\n\nclass UpiPayment : IPayment {\n    public void Pay() { /* UPI logic */ }\n}` },
+
+      { type: "heading", value: "🔹 Abstract Class — Contract + Shared Logic" },
+      { type: "text",    value: "An abstract class lets you <strong>share common code</strong> while still forcing subclasses to implement specific behaviour." },
+      { type: "code",    value: `abstract class Payment {\n    public void Validate() {\n        Console.WriteLine("Validating...");\n    }\n\n    public abstract void Pay(); // must override\n}` },
+
+      { type: "heading", value: "💡 When to Use What?" },
+      { type: "cards",   value: [
+        { title: "Use Interface when…",       text: "You need flexibility · Multiple unrelated implementations · Loose coupling · Dependency injection" },
+        { title: "Use Abstract Class when…",  text: "You want to reuse code · Share common logic across related classes · Avoid duplication" }
+      ]},
+
+      { type: "text",    value: "In modern applications — especially with <strong>Dependency Injection</strong> — interfaces are preferred because they make systems more testable and scalable." },
+      { type: "takeaway", value: "Interface = contract only. Abstract class = contract + shared behaviour. Knowing which to reach for keeps your code clean and your systems flexible." }
+    ]
+  },
+
+  {
+    day: 102,
+    title: "SOLID Principles",
+    subtitle: "Why some codebases scale beautifully — and others break with every new feature.",
+    tag: "Clean Code",
+    readTime: "4 min",
+    content: [
+      { type: "text",    value: "🚀 I finally understood why some codebases scale beautifully… while others break with every new feature. The difference often comes down to <strong>SOLID principles</strong>." },
+      { type: "text",    value: "SOLID isn't just theory — it's a practical way to write <strong>clean, maintainable, and scalable code</strong>." },
+
+      { type: "heading", value: "🔹 S — Single Responsibility Principle" },
+      { type: "text",    value: "A class should have <strong>only one reason to change</strong>. Instead of one class handling business logic + database + logging, split each responsibility into its own class." },
+      { type: "checklist", value: ["Easier debugging", "Cleaner code", "Changes in one area don't break others"] },
+
+      { type: "heading", value: "🔹 O — Open/Closed Principle" },
+      { type: "text",    value: "Code should be <strong>open for extension, closed for modification</strong>. Add new classes or implementations instead of editing existing ones for every new feature." },
+      { type: "checklist", value: ["Safer code changes", "Fewer regressions", "New features don't touch proven code"] },
+
+      { type: "heading", value: "🔹 L — Liskov Substitution Principle" },
+      { type: "text",    value: "Child classes should <strong>behave correctly when used as the parent</strong>. If swapping a base class for a subclass breaks the system, the design is wrong." },
+      { type: "checklist", value: ["Reliable inheritance hierarchies", "Predictable behavior", "Fewer runtime surprises"] },
+
+      { type: "heading", value: "🔹 I — Interface Segregation Principle" },
+      { type: "text",    value: "Don't force classes to implement methods they don't need. <strong>Break large interfaces into smaller, focused ones</strong> so each class only depends on what it actually uses." },
+      { type: "checklist", value: ["Cleaner design", "Better flexibility", "No bloated implementations"] },
+
+      { type: "heading", value: "🔹 D — Dependency Inversion Principle" },
+      { type: "text",    value: "<strong>Depend on abstractions, not concrete implementations.</strong> Use interfaces and dependency injection to decouple high-level modules from low-level details." },
+      { type: "checklist", value: ["Loose coupling", "Easier unit testing", "Better scalability"] },
+
+      { type: "heading", value: "⚖️ Real-World Impact" },
+      { type: "cards", value: [
+        { title: "❌ Without SOLID", text: "Tight coupling · Hard to scale · Difficult to test · Every change risks breaking something else." },
+        { title: "✅ With SOLID",    text: "Clean architecture · Easy to extend · Better team collaboration · Confident refactoring." }
+      ]},
+
+      { type: "takeaway", value: "SOLID is not about writing more code — it's about writing code that survives change and growth." }
+    ]
+  },
+
+  {
     day: 101,
     title: "Reverse Proxy vs Load Balancer vs API Gateway",
     subtitle: "Three tools that look similar but serve very different purposes.",
