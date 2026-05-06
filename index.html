@@ -89,6 +89,26 @@
 
         <div class="article-list" id="articleList">
 
+            <div class="article-list-item article-trigger" data-day="103" data-title="interface abstract class abstraction clean code csharp basics fundamentals oop">
+                <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                    <span class="basics-badge">Basics</span>
+                    <span class="topic-tag d-none d-sm-inline">Clean Code</span>
+                </div>
+                <span class="ali-title">Interface vs Abstract Class</span>
+                <span class="read-time d-none d-md-inline">⏱ 3 min</span>
+                <span class="read-btn">Read →</span>
+            </div>
+
+            <div class="article-list-item article-trigger" data-day="102" data-title="solid principles clean code srp ocp lsp isp dip basics fundamentals design patterns">
+                <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                    <span class="basics-badge">Basics</span>
+                    <span class="topic-tag d-none d-sm-inline">Clean Code</span>
+                </div>
+                <span class="ali-title">SOLID Principles</span>
+                <span class="read-time d-none d-md-inline">⏱ 4 min</span>
+                <span class="read-btn">Read →</span>
+            </div>
+
             <div class="article-list-item article-trigger" data-day="101" data-title="reverse proxy load balancer api gateway fundamentals basics microservices">
                 <div class="d-flex align-items-center gap-2 flex-shrink-0">
                     <span class="basics-badge">Basics</span>
@@ -282,6 +302,7 @@
                     case 'flow':      return `<div class="highlight-box my-4">${block.value}</div>`;
                     case 'list':      return `<ul>${block.value.map(i => `<li>${i}</li>`).join('')}</ul>`;
                     case 'checklist': return `<ul class="check-list">${block.value.map(i => `<li>✅ ${i}</li>`).join('')}</ul>`;
+                    case 'code':      return `<pre style="background:#f1f5f9;border-radius:8px;padding:1rem;font-size:0.82rem;overflow-x:auto;margin:1rem 0;"><code>${block.value}</code></pre>`;
                     case 'takeaway':  return `<h5 class="fw-bold mt-4 mb-3" style="color:#1e293b;">💡 Key Takeaway</h5><p>${block.value}</p>`;
                     case 'cards':     return `<div class="row g-3 my-4">${block.value.map(c =>
                         `<div class="col-12 col-sm-6"><div class="scale-card h-100"><h6>${c.title}</h6><p class="mb-0 small">${c.text}</p></div></div>`
